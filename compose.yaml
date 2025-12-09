@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: buch_postgres
+    environment:
+      POSTGRES_USER: buch_user
+      POSTGRES_PASSWORD: buch_password
+      POSTGRES_DB: buch_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U buch_user -d buch_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - buch_network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: buch_app
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: buch_user
+      DB_PASSWORD: buch_password
+      DB_NAME: buch_db
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+    networks:
+      - buch_network
+
+volumes:
+  postgres_data:
+
+networks:
+  buch_network:
+    driver: bridge

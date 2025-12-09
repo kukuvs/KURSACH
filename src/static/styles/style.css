@@ -1,0 +1,75 @@
+/* Переменные */
+:root {
+	--primary-color: #0d6efd;
+	--success-color: #198754;
+	--danger-color: #dc3545;
+}
+
+body {
+	background-color: #f8f9fa; /* Светло-серый фон */
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Навигация */
+.navbar-brand {
+	font-weight: 600;
+	font-size: 1.3rem;
+}
+
+/* Карточки */
+.card {
+	border-radius: 0.75rem;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Эффект наведения только для кликабельных карточек (если нужно) */
+/* .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+} */
+
+.shadow-sm {
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Таблицы */
+.table th {
+	font-weight: 600;
+	color: #495057;
+}
+
+.table td {
+	vertical-align: middle;
+}
+
+/* Цвета сумм */
+.amount-income {
+	color: var(--success-color);
+	font-weight: 600;
+}
+
+.amount-expense {
+	color: var(--danger-color);
+	font-weight: 600;
+}
+
+/* Модальные окна */
+.modal-content {
+	border-radius: 0.75rem;
+	border: none;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+	border-bottom: 1px solid #dee2e6;
+	background-color: #f8f9fa;
+	border-top-left-radius: 0.75rem;
+	border-top-right-radius: 0.75rem;
+}
+
+/* Футер */
+footer {
+	margin-top: auto;
+}
