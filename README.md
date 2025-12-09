@@ -81,7 +81,7 @@ docker-compose up -d postgres
 
 3. **Запустите приложение:**
 
-```
+
 
 ---
 
